@@ -1,0 +1,155 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matching Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color:#FFFF99;
+        }
+
+        h1 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 50px;
+            margin-bottom: 0px;
+            color: rgb(137, 94, 185);
+
+        }
+
+
+        p{
+            font-family: Helvetica, sans-serif;
+            font-size: 14px;
+            margin-top: 0px;
+            margin-left: 20px;
+            line-height: 1.5;
+
+        }
+
+        img {
+            position: absolute;
+        }
+
+        div {
+            background-color: white;
+            position: absolute;
+            width: 500px;
+            height: 500px;
+
+        }
+
+        #rightSide {
+            left: 500px;
+            border-left: 1px solid;
+        }
+
+        button {
+            background-color: black;
+            color: white;
+            text-transform: uppercase;
+            font-size: 20px;
+            border-style: none;
+            padding: 5px 20px;
+            margin-bottom: 20px;
+            font-family: 'Bebas Neue', cursive;
+        }
+
+        button:hover {
+            background-color: rgb(137, 94, 185);
+        }
+    </style>
+</head>
+
+<!---html start--->
+
+<body>
+    <h1>There are imposters among those in Smiley Town!</h1>
+
+    <p>
+        <strong>HOW TO PLAY:</strong><br>To eliminate the imposter click on the extra smiley face on the left side.<br>
+    Be careful! If you eliminate the wrong smiley face the game is over.</p>
+    <button onclick="retryGame()">Restart Game</button>
+
+    <div id="gameContainer">
+    <div id="leftSide"></div>
+    <div id="rightSide"></div>
+    </div>
+<!-- html end--->
+
+    <script>
+        window.addEventListener('load', generateFaces);
+        let numberOfFaces = 5;
+        const theLeftSide = document.getElementById("leftSide");
+        const theRightSide = document.getElementById("rightSide");
+        const game = document.getElementById("gameContainer");
+        let counter = 0
+
+        function generateFaces() {
+            for (let i = 0; i <= numberOfFaces; i++){
+                let face = document.createElement("img");
+                face.src = "images/smile.png";
+
+                let randomTop = Math.floor(Math.random()*400);
+                let randomLeft = Math.floor(Math.random()*400);
+
+                face.style.top = randomTop + "px";
+                face.style.left = randomLeft + "px";
+                theLeftSide.appendChild(face);
+            }
+
+            const leftSideImages = theLeftSide.cloneNode(true);
+            leftSideImages.removeChild(leftSideImages.lastChild);
+            theRightSide.appendChild(leftSideImages);
+        
+            theLeftSide.lastChild.addEventListener("click", nextLevel);
+            game.addEventListener("click", gameOver);
+        }
+
+        function gameOver(){
+            if (counter >= 2){
+                alert("Game Over!\nYou have found " + counter + " Imposters!");
+            } else if (counter === 1) {
+                alert("Game Over!\nYou have found " + counter + " imposter.");
+            } else {
+                alert("Game Over!\nYou have failed in finding anything.");
+            }
+            
+            game.addEventListener("click", gameOver);
+            theLeftSide.lastChild.removeEventListener("click", nextLevel);
+        }
+
+        function nextLevel() {
+            event.stopPropagation();
+            numberOfFaces += 5;
+
+            while (theLeftSide.firstChild) {
+                theLeftSide.removeChild(theLeftSide.firstChild);
+            }
+            while (theRightSide.firstChild) {
+                theRightSide.removeChild(theRightSide.firstChild);
+            }
+            counter++;
+            generateFaces();
+        }
+
+        function retryGame() {
+            while (theLeftSide.firstChild) {
+                theLeftSide.removeChild(theLeftSide.firstChild);
+            }
+            while (theRightSide.firstChild) {
+                theRightSide.removeChild(theRightSide.firstChild);
+            }
+        
+            numberOfFaces=5;
+            generateFaces();
+        }
+
+
+    </script>
+</body>
+
+</html>
