@@ -16,8 +16,14 @@
             font-family: 'Bebas Neue', cursive;
             font-size: 50px;
             margin-bottom: 0px;
-            color: rgb(137, 94, 185);
+        }
 
+        h3 {
+            font-family: Helvetica, sans-serif;
+            font-weight: 800;
+            font-size: 18px;
+            text-decoration: underline;
+            margin: 6px 0;
         }
 
 
@@ -42,13 +48,18 @@
 
         }
 
+        #gameInfo {
+            width: 1000px;
+            text-align: center;
+        }
+
         #rightSide {
             left: 500px;
             border-left: 1px solid;
         }
 
         button {
-            background-color: black;
+            background-color: rgb(137, 94, 185);
             color: white;
             text-transform: uppercase;
             font-size: 20px;
@@ -58,8 +69,12 @@
             font-family: 'Bebas Neue', cursive;
         }
 
+        span {
+            color: rgb(137, 94, 185);
+        }
+    
         button:hover {
-            background-color: rgb(137, 94, 185);
+            background-color: rgb(170, 127, 219);
         }
     </style>
 </head>
@@ -67,12 +82,16 @@
 <!---html start--->
 
 <body>
-    <h1>There are imposters among those in Smiley Town!</h1>
-
-    <p>
-        <strong>HOW TO PLAY:</strong><br>To eliminate the imposter click on the extra smiley face on the left side.<br>
+<section id="gameInfo">
+    
+    <h1>There are <span>imposters</span> among those in Smiley Town!</h1>
+    <h3>HOW TO PLAY</h3>
+    <p>To eliminate the imposter click on the extra smiley face on the left side.<br>
     Be careful! If you eliminate the wrong smiley face the game is over.</p>
     <button onclick="retryGame()">Restart Game</button>
+
+</section>
+    
 
     <div id="gameContainer">
     <div id="leftSide"></div>
