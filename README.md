@@ -12,7 +12,8 @@ In this browser game the player is given two semi-identical game boards covered 
 
 ### What I learned
 While working on the Imposter Game I became much more familiar with the DOM and Nodes. I challenged myself to allow the user to reset the game without having to refresh the web page. In order to accomplish this I created a function that removed all the children of the existing nodes on both sides of the gameboard. Once that was done the function was set to generate new smiley faces for a fresh game.
-![Screenshot of function](/images/Example-Function.png)
+
+![Screenshot of function](/images/Example-Function.PNG)
 
 
 ### Screenshots
