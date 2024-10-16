@@ -18,7 +18,7 @@ While working on the Imposter Game I became much more familiar with the DOM and 
 
 ![Screenshot of function](/images/Example-Function.PNG)
 
-### Screenshots
+## Project Screenshots
 ![Screenshot of Imposter Game](/images/Screen-Imposter.png)
 > Screenshot of Imposter Game upon load.
 
